@@ -1,11 +1,8 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
 *{
   background-color: #030303;
+  box-sizing: border-box;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
 }
 a.active{
   color: white;
@@ -19,6 +16,10 @@ a{
 a:hover{
   color: white;
   text-decoration: none;
+}
+.main-container{
+  display: flex;
+  flex-direction: column;
 }
 .menu-bar-item{
   color: #717171;
@@ -53,4 +54,23 @@ a:hover{
   width: 80px;
   justify-content: space-between;
   margin-right: 1em;
+}
+.mood-labels{
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 7rem;
+  margin-top: 6rem;
+}
+.mood-label-item{
+  color: white;
+  background-color: #251E27;
+  margin: 0.5em;
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  font-size: 14px;
+  font-weight: 500;
+}
+.mood-label-item:hover{
+  background-color: #3D363E;
+  cursor: pointer;
 }
