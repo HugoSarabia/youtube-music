@@ -12,9 +12,9 @@ export default function MenuBar() {
             <img src='src\img\youtube-music.svg' alt='logo' className='menu-logo-container'/>
             
             <nav className='mavbar'>
-                <NavLink to="/">Principal</NavLink>
-                <NavLink to="/explore">Explorar</NavLink>
-                <NavLink to="/library">Biblioteca</NavLink>
+                <NavLink to="/" className='navbar-item'>Principal</NavLink>
+                <NavLink to="/explore" className='navbar-item'>Explorar</NavLink>
+                <NavLink to="/library" className='navbar-item'>Biblioteca</NavLink>
                 <span className='menu-bar-item'><FontAwesomeIcon icon={faMagnifyingGlass}/> Buscar</span>
             </nav>
             <div className='menu-icons'>
