@@ -14,11 +14,11 @@ export default function ListenAgain(){
             <div className='listen-again-bottom-div'>
                 <div className='song-card'>
                     <div className='song-thumbnail'>
+                        <FontAwesomeIcon icon={faPlay} size='2xl' className='faplay'/>
                         <img className='song-thumbnail-img'/>
-                        <FontAwesomeIcon icon={faPlay} size='2xl'/>
-                            <div className='song-thumbnail-options'>
-                                <FontAwesomeIcon icon={faEllipsisVertical} />
-                            </div>
+                        <div className='song-thumbnail-options'>
+                            <FontAwesomeIcon icon={faEllipsisVertical} className='faellipsisvertical' />
+                        </div>
                     </div>
                     <div className='song-info'>
                         <div className='song-title'>
