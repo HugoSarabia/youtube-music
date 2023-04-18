@@ -18,7 +18,6 @@ export default function AvatarPic() {
                 })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data);
                     for (const key in data) {
                         if(key === 'images'){
                             setPicURL(data[key][0].url);

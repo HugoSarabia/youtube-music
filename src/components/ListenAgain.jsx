@@ -10,7 +10,7 @@ export default function ListenAgain(){
         <div className='listen-again-container'>
             <div className='listen-again-top-div'>
                 <AvatarPic/>
-                <SubTitle title="hugo sanchez de la vega sarabia" subtitle="Volver a escuchar" more="true"/>
+                <SubTitle subtitle="Volver a escuchar" more="true"/>
             </div>
             <div className='listen-again-bottom-div'>
                 <div className='song-card'>
