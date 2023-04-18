@@ -1,8 +1,8 @@
-*{
+body{
   background-color: #030303;
   box-sizing: border-box;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-
+  color: #fff;
 }
 a.active{
   color: white;
@@ -154,7 +154,15 @@ a.active{
   flex-direction: column;
   position: relative;
   width: 180px;
-  height: 180px;
+  height: 232px;
   border-radius: 5px;
-  background-color: aqua;
+}
+/*LOGIN*/
+.login-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 5rem;
+  background-color: #251E27;
 }

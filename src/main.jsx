@@ -3,8 +3,15 @@ import ReactDOM from 'react-dom/client'
 import './App.css'
 import {createBrowserRouter,RouterProvider} from "react-router-dom";
 import Home from './pages/home';
+import Login from './auth/login';
 
+const urlParams = new URLSearchParams(window.location.search);
+let code = urlParams.get('code');
 const router = createBrowserRouter([
+  {
+    path: "/login",
+    element: <Login/>,
+  },
   {
     path: "/explore",
     element: <div>Explorar</div>,
@@ -15,7 +22,7 @@ const router = createBrowserRouter([
   },
   {
       path: "/",
-      element: <Home/>,
+      element: code? <Home code={code}/> : <Login/>,
   },
 ]);
 
