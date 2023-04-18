@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
 body{
   background-color: #030303;
   box-sizing: border-box;
@@ -100,8 +101,9 @@ a.active{
 }
 .subtitle-main{
   color: white;
-  font-size: 35px;
+  font-size: 24px;
   font-weight: 700;
+  font-family: Roboto, sans-serif;
   text-decoration: none;
 }
 .listen-again-options{
@@ -156,6 +158,67 @@ a.active{
   width: 180px;
   height: 232px;
   border-radius: 5px;
+}
+.song-thumbnail{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 180px;
+  height: 180px;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.song-thumbnail:hover{
+  background-color: #ffffff73;
+}
+.song-thumbnail-options{
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  height: 5px;
+  width: 5px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.song-thumbnail-options:hover{
+  background-color: #ffffff1a;
+}
+.song-thumbnail-hover{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+.song-thumbnail-hover:hover{
+  background-color: #00000080;
+}
+.song-info{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color: #ffffffb3;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: Roboto, sans-serif;
+}
+.song-title{
+  display: flex;
+  width: 100%;
+  margin-top: 1em;
+  margin-bottom: 5px;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: Roboto, sans-serif;
 }
 /*LOGIN*/
 .login-container{

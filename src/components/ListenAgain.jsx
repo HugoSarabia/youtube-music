@@ -1,5 +1,7 @@
 import React from 'react';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
+import { faPlay } from '@fortawesome/free-solid-svg-icons'
 import SubTitle from './SubTitle';
 export default function ListenAgain(){
 
@@ -13,12 +15,16 @@ export default function ListenAgain(){
                 <div className='song-card'>
                     <div className='song-thumbnail'>
                         <img className='song-thumbnail-img'/>
-                        <div className='song-thumbnail-hover'>
-                            <div className='song-thumbnail-hover-play'></div>
+                        <FontAwesomeIcon icon={faPlay} size='2xl'/>
                             <div className='song-thumbnail-options'>
-                            <FontAwesomeIcon icon={faEllipsisVertical} />
+                                <FontAwesomeIcon icon={faEllipsisVertical} />
                             </div>
+                    </div>
+                    <div className='song-info'>
+                        <div className='song-title'>
+                            <span>Do I Wanna Know?</span>
                         </div>
+                        <span>Artic Monkeys</span>
                     </div>
                 </div>
             </div>
