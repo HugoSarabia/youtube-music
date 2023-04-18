@@ -2,13 +2,14 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
 import { faPlay } from '@fortawesome/free-solid-svg-icons'
-import SubTitle from './SubTitle';
+import SubTitle from './SubTitle'
+import AvatarPic from './AvatarPic';
 export default function ListenAgain(){
 
     return(
         <div className='listen-again-container'>
             <div className='listen-again-top-div'>
-                <img className='listen-again-user-pic'/>
+                <AvatarPic/>
                 <SubTitle title="hugo sanchez de la vega sarabia" subtitle="Volver a escuchar" more="true"/>
             </div>
             <div className='listen-again-bottom-div'>
@@ -17,7 +18,7 @@ export default function ListenAgain(){
                         <FontAwesomeIcon icon={faPlay} size='2xl' className='faplay'/>
                         <img className='song-thumbnail-img'/>
                         <div className='song-thumbnail-options'>
-                            <FontAwesomeIcon icon={faEllipsisVertical} className='faellipsisvertical' />
+                            <FontAwesomeIcon icon={faEllipsisVertical} />
                         </div>
                     </div>
                     <div className='song-info'>

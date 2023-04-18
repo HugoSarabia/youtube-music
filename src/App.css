@@ -111,6 +111,7 @@ a.active{
   height: 100px;
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 .listen-again-user-pic{
   width: 3rem;

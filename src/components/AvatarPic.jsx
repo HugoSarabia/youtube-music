@@ -1,16 +1,12 @@
-import React, {useEffect, useState, useRef} from 'react';
-import NavBar from '../components/MenuBar'
-import MoodLabels from '../components/MoodLabels';
-import ListenAgain from '../components/ListenAgain';
-import useAuth from '../hooks/useAuth';
+import React, {useRef, useEffect, useState} from 'react'
+import Avatar from '@mui/material/Avatar';
 
-export default function Home({code}) {
-    const [apiData, setApiData] = useState(null);
+export default function AvatarPic() {
     const hasFetchedData = useRef(false);
-    useAuth({code})
+    const [picURL, setPicURL] = useState(null);
     useEffect(()=>{
         let accessToken = localStorage.getItem('access-token');
-        let url = "https://api.spotify.com/v1/me/top/tracks"
+        let url = "https://api.spotify.com/v1/me"
         const fetchData = async (url) =>{
             try {
                 await fetch(url, {
@@ -22,8 +18,12 @@ export default function Home({code}) {
                 })
                 .then(response => response.json())
                 .then(data => {
-                    setApiData(data)
                     console.log(data);
+                    for (const key in data) {
+                        if(key === 'images'){
+                            setPicURL(data[key][0].url);
+                        }
+                    }
                 });
               } catch (e) {
                 console.error('Error fetching api data', e);
@@ -35,11 +35,9 @@ export default function Home({code}) {
               hasFetchedData.current = true;
             }
     },[])
-    return (
-        <div className='main-container'>
-            <NavBar/>
-            <MoodLabels/>
-            <ListenAgain/>
-        </div>
-    )
+    return(
+        <>
+            <Avatar alt="Remy Sharp" src={picURL} sx={{ width: 50, height: 50, marginRight: 2 }} />
+        </>
+        )
 }
