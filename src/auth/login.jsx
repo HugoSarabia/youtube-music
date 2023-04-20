@@ -43,7 +43,7 @@ export default function Login() {
         
         generateCodeChallengeFromVerifier(codeVerifier).then(codeChallenge => {
           let state = generateCodeVerifier(16);
-          let scope = 'user-top-read user-library-read playlist-modify-private';
+          let scope = 'user-top-read';
         
           localStorage.setItem('code-verifier', codeVerifier);
         
