@@ -6,7 +6,7 @@ export default function AvatarPic() {
     const picURL = useProfilePic();
     return(
         <>
-            <Avatar alt="Remy Sharp" src={picURL} sx={{ width: 50, height: 50, marginRight: 2 }} />
+            <Avatar alt="Remy Sharp" src={picURL} sx={{ width: 56, height: 56, marginRight: 2, marginBottom: 0.5, cursor: 'pointer' }} />
         </>
         )
 }

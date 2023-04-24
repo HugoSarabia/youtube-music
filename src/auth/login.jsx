@@ -63,7 +63,7 @@ export default function Login() {
     return(
       <>
         <Container maxWidth="sm" sx={{display: 'grid', placeItems: 'center', height: '50vh', width: '100vw'}}>
-          <h1>Ironicamente vamos a utilizar la API de Spotify para este proyecto jeje.</h1>
+          <h1>Ironicamente vamos a utilizar la API de Spotify para este proyecto jeje</h1>
           <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', bgcolor: '#255E27', height: '25em', width: '25em', borderRadius: '10px' }}>
             <Button variant="contained" onClick={Auth} color="success">Iniciar sesión con Spotify</Button>
           </Box>

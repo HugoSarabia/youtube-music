@@ -34,6 +34,7 @@ export default function useAuth({code}) {
                 })
                 .catch(error => {
                     console.error('Error:', error);
+                    return false
                 });
             }
             if (hasFetchedData.current === false) {
@@ -41,7 +42,6 @@ export default function useAuth({code}) {
                 hasFetchedData.current = true;
               }
         },[])
-
             
 
 }
