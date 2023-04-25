@@ -3,13 +3,14 @@ import SongCard from "./SongCard";
 import useSongAPI from "../hooks/useSongAPI";
 
 export default function DisplaySongCards({currentPage, onPageChange}) {
-    const songs = useSongAPI()
+	const songs = useSongAPI();
 
-    //retornar el aareglo y usarlo en otro componenete para ahi desplegar los songcards
-    const cardsPerPage = 6;
-    const firstCardIndex = (currentPage - 1) * cardsPerPage;
+	//retornar el aareglo y usarlo en otro componenete para ahi desplegar los songcards
+	const cardsPerPage = 6;
+	const firstCardIndex = (currentPage - 1) * cardsPerPage;
 	const lastCardIndex = firstCardIndex + cardsPerPage - 1;
 	const visibleCards = songs.slice(firstCardIndex, lastCardIndex + 1);
+	
 	useEffect(() => {
 		const observer = new IntersectionObserver(
 			(entries) => {
@@ -39,7 +40,7 @@ export default function DisplaySongCards({currentPage, onPageChange}) {
 						songName={el.songName}
 						albumURL={el.albumURL}
 						albumName={el.albumName}
-                        isVisible={true}
+						isVisible={true}
 					/>
 				))
 			)}

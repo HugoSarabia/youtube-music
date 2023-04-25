@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useRef} from 'react'
+import React, { useEffect, useRef} from 'react'
+import useRefreshToken from "../hooks/useRefreshToken";
 
 export default function useAuth({code}) {
     const hasFetchedData = useRef(false);
@@ -16,27 +17,36 @@ export default function useAuth({code}) {
 
         useEffect(()=>{
             const applyToken = async ()=>{
-                const response = await fetch('https://accounts.spotify.com/api/token', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: body
-                })
-                .then(response => {
-                    if (!response.ok) {
-                    throw new Error('HTTP status ' + response.status);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    localStorage.setItem('access-token', data.access_token);
-                })
-                .catch(error => {
+                try{
+                    const response = await fetch('https://accounts.spotify.com/api/token', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: body
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            if(response.status === 401){
+                                useRefreshToken();
+                            }
+                        throw new Error('HTTP status ' + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        localStorage.setItem('access-token', data.access_token);
+                        localStorage.setItem('refresh-token', data.refresh_token);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        return false
+                    });
+                }catch(error){
                     console.error('Error:', error);
                     return false
-                });
-            }
+                };
+            };
             if (hasFetchedData.current === false) {
                 applyToken();
                 hasFetchedData.current = true;

@@ -1,0 +1,22 @@
+{
+    "pilaini": {
+        "name": "Pilaini",
+        "type": "string",
+        "value": "Pilaini"
+    },
+    "pilaini2": {
+        "name": "Pilaini2",
+        "type": "string",
+        "value": "Pilaini2"
+    },
+    "pilaini3": {
+        "name": "Pilaini3",
+        "type": "string",
+        "value": "Pilaini3"
+    },
+    "pilaini4": {
+        "name": "Pilaini4",
+        "type": "string",
+        "value": "Pilaini4"
+    }
+}
