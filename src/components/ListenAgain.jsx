@@ -6,7 +6,6 @@ import DisplaySongCards from './DisplaySongCards';
 export default function ListenAgain(){
     const [currentPage, setCurrentPage] = useState(1);
 
-
     const handlePageChange = (pageNumber) => {
       setCurrentPage(pageNumber);
     };

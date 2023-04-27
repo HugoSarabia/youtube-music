@@ -10,6 +10,7 @@ export default function DisplaySongCards({currentPage, onPageChange}) {
 	const firstCardIndex = (currentPage - 1) * cardsPerPage;
 	const lastCardIndex = firstCardIndex + cardsPerPage - 1;
 	const visibleCards = songs.slice(firstCardIndex, lastCardIndex + 1);
+	console.log(visibleCards);
 	
 	useEffect(() => {
 		const observer = new IntersectionObserver(

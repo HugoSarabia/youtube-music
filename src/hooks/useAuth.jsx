@@ -1,11 +1,14 @@
-import React, { useEffect, useRef} from 'react'
-import useRefreshToken from "../hooks/useRefreshToken";
+import React, { useEffect, useState, useRef} from 'react'
+import useRefreshToken from "./useRefreshToken";
+
 
 export default function useAuth({code}) {
     const hasFetchedData = useRef(false);
     const clientId = '628c60b8375e459c84e91945da64817b';
     const redirectUri = 'http://localhost:4000/';
     let codeVerifier = localStorage.getItem('code-verifier');
+    const [newToken, setNewToken] = useState(null)
+    const refreshToken = useRefreshToken();
 
     let body = new URLSearchParams({
         grant_type: 'authorization_code',
@@ -27,10 +30,9 @@ export default function useAuth({code}) {
                     })
                     .then(response => {
                         if (!response.ok) {
-                            if(response.status === 401){
-                                useRefreshToken();
-                            }
-                        throw new Error('HTTP status ' + response.status);
+                            throw new Error('HTTP status ' + response.status);
+                        }else if(response.status === 401){
+                            setNewToken(refreshToken)
                         }
                         return response.json();
                     })

@@ -4,6 +4,7 @@ import MoodLabels from "../components/MoodLabels";
 import ListenAgain from "../components/ListenAgain";
 import useAuth from "../hooks/useAuth";
 
+
 export default function Home({code}) {
 	useAuth({code});
 
@@ -12,6 +13,7 @@ export default function Home({code}) {
 			<NavBar />
 			<MoodLabels />
 			<ListenAgain />
+
 		</div>
 	);
 }

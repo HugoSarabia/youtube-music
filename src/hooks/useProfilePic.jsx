@@ -1,37 +1,44 @@
 import React, {useRef, useEffect, useState} from 'react'
+import useAuthWithRefreshToken from "./useAPIWithRefreshToken";
+
 
 export default function useProfilePic() {
     const hasFetchedData = useRef(false);
     const [picURL, setPicURL] = useState(null);
+    const url = "https://api.spotify.com/v1/me"
+    let access_token = localStorage.getItem('access-token');
+
     useEffect(()=>{
-        let accessToken = localStorage.getItem('access-token');
-        let url = "https://api.spotify.com/v1/me"
-        const fetchData = async (url) =>{
-            try {
-                await fetch(url, {
-                    method: 'GET',
-                  headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    Authorization: 'Bearer ' + accessToken
-                  }
+        const getAPI = async ()=>{
+            try{
+                const response = await fetch(url, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        Authorization: "Bearer " + access_token,
+                    },
+
                 })
-                .then(response => response.json())
-                .then(data => {
+                if(response.status === 200){
+                    let data = await response.json()
                     for (const key in data) {
                         if(key === 'images'){
                             setPicURL(data[key][0].url);
                         }
                     }
-                });
-              } catch (e) {
-                console.error('Error fetching api data', e);
-              };
-              
-            }
-            if (hasFetchedData.current === false) {
-              fetchData(url);
-              hasFetchedData.current = true;
-            }
+                }
+                
+            }catch(error){
+                console.error('Error:', error);
+                return false
+            };
+        };
+        if (hasFetchedData.current === false) {
+            getAPI();
+            hasFetchedData.current = true;
+          }
     },[])
+
+
     return picURL;
 }

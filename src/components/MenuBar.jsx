@@ -12,6 +12,7 @@ import useProfilePic from '../hooks/useProfilePic'
 
 export default function MenuBar() {
     const picURL = useProfilePic();
+
     return (
         <div className='menu-bar-container'>
             

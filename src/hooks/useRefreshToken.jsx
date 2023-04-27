@@ -1,8 +1,8 @@
-import React, { useEffect, useRef} from 'react'
+import React, { useEffect, useRef, useState} from 'react'
 
 
 export default function useRefreshToken(){
-    const refresh_token = localStorage.getItem('access-token');
+    const refresh_token = localStorage.getItem('refresh-token');
     const AUTH_URL = 'https://accounts.spotify.com/api/token';
     const hasFetchedData = useRef(false);
     const clientId = '628c60b8375e459c84e91945da64817b';
@@ -30,16 +30,11 @@ export default function useRefreshToken(){
                     return response.json();
                 })
                 .then(data => {
-                    localStorage.setItem('access-token', data.access_token);
                     localStorage.setItem('refresh-token', data.refresh_token);
-                    window.location.reload();
+                    localStorage.setItem('access-token', data.access_token);
                 })
-                .catch(error => {
-                    console.error('Error:', error);
-                    return false
-                });
             }catch(error){
-                console.error('Error:', error);
+                console.error('Error: ', error);
             };
         }
         if (hasFetchedData.current === false) {
@@ -48,5 +43,4 @@ export default function useRefreshToken(){
           }
 
     },[])
-
 }

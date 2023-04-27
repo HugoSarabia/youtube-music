@@ -1,18 +1,20 @@
 import React, {useRef, useEffect, useState} from "react";
+import useAuthWithRefreshToken from "./useAPIWithRefreshToken";
 
 export default function SongAPI() {
 	const hasFetchedData = useRef(false);
 	const [songs, setSongs] = useState([]);
+	
 	useEffect(() => {
-		let accessToken = localStorage.getItem("access-token");
-		let url = "https://api.spotify.com/v1/me/top/tracks";
-		const getData = async (url) => {
+		let url = "https://api.spotify.com/v1/me/top/tracks?limit=24";
+		let access_token = localStorage.getItem("access-token");
+		const getAPI = async () => {
 			try {
-				await fetch(url, {
+				const response = await fetch(url, {
 					method: "GET",
 					headers: {
 						"Content-Type": "application/x-www-form-urlencoded",
-						Authorization: "Bearer " + accessToken,
+						Authorization: "Bearer " + access_token,
 					},
 				})
 					.then((response) => response.json())
@@ -67,13 +69,18 @@ export default function SongAPI() {
 								});
 							}
 						}
+					})
+					.catch((error) => {
+						console.error("Error:", error);
+						return false;
 					});
-			} catch (e) {
-				console.error("Error fetching api data", e);
+			} catch (error) {
+				console.error("Error:", error);
+				return false;
 			}
 		};
 		if (hasFetchedData.current === false) {
-			getData(url);
+			getAPI();
 			hasFetchedData.current = true;
 		}
 	}, []);
